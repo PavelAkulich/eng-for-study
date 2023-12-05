@@ -1,6 +1,7 @@
-import { Button } from "@/components/ui/button";
 import React from "react";
 import {BookOpenText} from 'lucide-react'
+
+import AuthButton from "./_components/auth-button";
 
 type Props = {};
 
@@ -13,7 +14,7 @@ const LandingPage = (props: Props) => {
         Learn English quickly. Learn English easily. <br /> Learn English with ENG FOR
         STUDY
       </div>
-      <Button>Start NOW</Button>
+      <AuthButton>Start NOW</AuthButton>
     </div>
   );
 };

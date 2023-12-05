@@ -1,7 +1,8 @@
-import { ModeToggle } from "@/components/ModeToggle";
-import { Button } from "@/components/ui/button";
-import { BookOpenCheck } from "lucide-react";
 import React from "react";
+import { BookOpenCheck } from "lucide-react";
+
+import { ModeToggle } from "@/components/ModeToggle";
+import AuthButton from "./auth-button";
 
 type Props = {};
 
@@ -14,7 +15,7 @@ export const Header = (props: Props) => {
       </div>
       <div className="flex items-center">
         <ModeToggle />
-        <Button variant="link">Log In</Button>
+        <AuthButton variant="link">Log In</AuthButton>
       </div>
     </div>
   );
