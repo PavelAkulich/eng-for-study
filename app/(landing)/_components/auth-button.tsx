@@ -8,7 +8,7 @@ type Props = Omit<ButtonProps, "onClick" | "type">;
 const AuthButton = ({ children, ...rest }: Props) => {
   return (
     <Button {...rest} type="button" asChild>
-      <Link href="/auth">{children}</Link>
+      <Link href="/sign-in">{children}</Link>
     </Button>
   );
 };

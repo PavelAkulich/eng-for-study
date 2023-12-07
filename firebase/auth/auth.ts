@@ -5,9 +5,14 @@ import {
   getAuth,
 } from "firebase/auth";
 
-export const auth = getAuth(app);
+const auth = getAuth(app);
 
-export async function signUp(email: string, password: string) {
+export type Credentials = {
+  email: string,
+  password: string
+}
+
+export async function signUp({email, password}: Credentials) {
   let result = null,
     error = null;
   try {
@@ -19,7 +24,7 @@ export async function signUp(email: string, password: string) {
   return { result, error };
 }
 
-export async function signIn(email: string, password: string) {
+export async function signIn({email, password}: Credentials) {
   let result = null,
     error = null;
   try {

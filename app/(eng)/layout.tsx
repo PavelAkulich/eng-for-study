@@ -1,15 +1,16 @@
+'use client'
 import React from "react";
 import { redirect } from "next/navigation";
-import { auth } from "@/firebase/auth/auth";
+import { useIsLogged } from "@/hooks/useIsLogged";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const EngLayout = ({ children }: Props) => {
-
-  if(!auth.currentUser) redirect('/auth');
-
+  const {loading, user} = useIsLogged()
+  if (loading) return 'loading...'
+  if (!loading && !user) redirect('/sign-in');
   return (
     <div>
       test

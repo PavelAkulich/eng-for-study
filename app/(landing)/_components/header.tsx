@@ -1,7 +1,7 @@
 import React from "react";
 import { BookOpenCheck } from "lucide-react";
 
-import { ModeToggle } from "@/components/ModeToggle";
+import { ModeToggle } from "@/components/mode-toggle";
 import AuthButton from "./auth-button";
 
 type Props = {};
