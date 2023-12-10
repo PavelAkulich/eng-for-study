@@ -1,3 +1,5 @@
+import { useToast } from "@/components/ui/use-toast";
+import { ErrorType } from "@/types/types";
 import { useCallback, useState } from "react";
 
 type SubmitFunctionParams<T> = {
@@ -10,7 +12,7 @@ type UseSubmitButtonOptions<TOutput> = {
 
 type UseSubmitButtonFn<TInput, TOutput> =  (data: SubmitFunctionParams<TInput>) => Promise<{
     result: TOutput | null;
-    error: any;
+    error: ErrorType | null;
   }>;
 
 
@@ -21,19 +23,26 @@ export const useSubmitButton = <TInput, TOutput>(
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<TOutput | null>(null);
   const [errors, setErrors] = useState<any | null>(null);
+  const {toast} = useToast();
   const execute = useCallback(
     async (data: SubmitFunctionParams<TInput>) => {
       setLoading(true);
       try {
         const result = await fn(data);
-        if (!result.result) return;
+        if (!result) return;
         if (result.result) {
           setData(result.result);
           options.onSuccess?.(result.result);
         }
         if (result.error) {
+          console.log(result.error)
           setErrors(result.error);
           options.onError?.(result.error);
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: result.error.message,
+          })
         }
       } finally {
         setLoading(false);

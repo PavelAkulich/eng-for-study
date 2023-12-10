@@ -1,10 +1,12 @@
 'use client'
 
+import FormInput from "@/components/form-input";
+import FormLabel from "@/components/form-label";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Credentials, signIn } from "@/firebase/auth/auth";
 import { useSubmitButton } from "@/hooks/useSubmitButton";
 import { UserCredential } from "firebase/auth";
+import { LogIn } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -23,9 +25,10 @@ const SignIn = (props: Props) => {
     execute({email, password})
   }
   return (
-    <form action={onSubmit}>
-      <Input name="email"/>
-      <Input name="password"/>
+    <form action={onSubmit} className="flex flex-col gap-4">
+      <FormLabel icon={<LogIn />}>SIGN IN</FormLabel>
+      <FormInput name="email" labelText="EMAIL" id="email"/>
+      <FormInput name="password" labelText="PASSWORD" id="password"/>
       <Button type="submit">SIGN IN</Button>
       <Button variant='link' type="button" asChild><Link href='/sign-up'>No accaunt?</Link></Button>
     </form>

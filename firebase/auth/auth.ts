@@ -1,3 +1,4 @@
+import { ErrorType } from "@/types/types";
 import { app } from "../config";
 import {
   createUserWithEmailAndPassword,
@@ -18,7 +19,7 @@ export async function signUp({email, password}: Credentials) {
   try {
     result = await createUserWithEmailAndPassword(auth, email, password);
   } catch (e) {
-    error = e;
+    error = e as ErrorType;
   }
 
   return { result, error };
@@ -30,7 +31,7 @@ export async function signIn({email, password}: Credentials) {
   try {
     result = await signInWithEmailAndPassword(auth, email, password);
   } catch (e) {
-    error = e;
+    error = e as ErrorType;
   }
 
   return { result, error };
