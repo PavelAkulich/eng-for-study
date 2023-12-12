@@ -17,7 +17,7 @@ export const Footer = (props: Props) => {
           className="flex gap-2 justify-center items-center hover:opacity-60 transition-all"
         >
           <Github />
-          PavelAkulich
+          <span className="hidden md:inline">PavelAkulich</span>
         </a>
       </div>
     </footer>
