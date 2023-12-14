@@ -9,11 +9,7 @@ type Props = {};
 
 export const Header = (props: Props) => {
   return (
-    <div className="bg-slate-300 dark:bg-gray-900 w-full flex justify-between p-2">
-      <Link href="/home" className="flex gap-2 items-center pl-2 hover:opacity-60 transition-all">
-        <BookOpenCheck className="w-8 h-8" />
-        <span className="hidden md:block">ENG FOR STUDY</span>
-      </Link>
+    <div className="bg-slate-300 dark:bg-gray-900 w-full flex justify-end  p-2">
       <div className="flex items-center gap-2">
         <ModeToggle />
         <Button variant="ghost">

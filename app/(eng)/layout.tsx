@@ -16,11 +16,11 @@ const EngLayout = ({ children }: Props) => {
   if (loading) return <Loader />;
   // if (!loading && !user) redirect('/sign-in');
   return (
-    <div className="bg-background h-full w-full flex flex-col justify-between align-middle items-center">
-      <Header />
-      <div className="flex h-full w-full">
-        <Sidebar />
-        <div className="grow flex flex-col h-full w-full">
+    <div className="bg-background h-full w-full flex justify-between align-middle items-center">
+      <Sidebar />
+      <div className="grow flex h-full w-full">
+        <div className="flex h-full w-full  flex-col ">
+          <Header />
           <main className="grow flex flex-col justify-center items-center p-4 bg-gradient-to-b dark:from-gray-800 dark:to-gray-900 from-slate-100 to-slate-300 ">
             {children}
           </main>
