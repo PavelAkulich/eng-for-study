@@ -4,9 +4,21 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
+  User,
 } from "firebase/auth";
 
 const auth = getAuth(app);
+
+export let currentUser: User | null = null
+
+export const unsubscribe = onAuthStateChanged(auth, (user) => {
+  if (user) {
+    currentUser = user;
+  } else {
+    currentUser = null;
+  }
+});
 
 export type Credentials = {
   email: string,

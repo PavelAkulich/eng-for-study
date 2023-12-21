@@ -1,20 +1,27 @@
 "use client";
 import React from "react";
-import { redirect } from "next/navigation";
-import { useIsLogged } from "@/hooks/useIsLogged";
 import { Header } from "./_components/header";
 import { Footer } from "@/components/footer";
 import Loader from "@/components/loader";
 import Sidebar from "./_components/sidebar";
+import { useMounted } from "@/hooks/useMounted";
+import { useRouter } from "next/navigation";
+import { useAuthContext } from "@/components/auth-provider";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const EngLayout = ({ children }: Props) => {
-  const { loading, user } = useIsLogged();
+  const { loading } = useMounted();
+  const { user } = useAuthContext();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (user == null && !loading) router.push("/");
+  }, [user]);
+
   if (loading) return <Loader />;
-  // if (!loading && !user) redirect('/sign-in');
   return (
     <div className="bg-background h-full w-full flex justify-between align-middle items-center">
       <Sidebar />

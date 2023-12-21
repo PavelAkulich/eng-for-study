@@ -30,7 +30,7 @@ const Menu = ({ open = true }: Props) => {
           href={item.href}
           key={item.href}
           className={cn(
-            "flex gap-2 items-center hover:bg-transparent/10 dark:hover:bg-transparent/50 p-2 overflow-hidden",
+            "flex gap-2 items-center hover:bg-transparent/10 transition-all duration-300 dark:hover:bg-transparent/50 p-2 overflow-hidden",
             open ? "justify-between" : "justify-center",
             pathname === item.href
               ? "bg-transparent/5 dark:bg-transparent/40"
